@@ -182,7 +182,14 @@ var detectNetwork = function(cardNumber) {
   ) {
     return "Maestro"
   // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
-  } else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
+} else if  (chinaUnionPayLengthSet.has(cardNumber.length)
+      && chinaUnionPayPrefixSet.has(cardNumber.slice(0,3))
+      || chinaUnionPayPrefixSet.has(cardNumber.slice(0,4))
+      || chinaUnionPayPrefixSet.has(cardNumber.slice(0,6))
+  ) {
+    return "China UnionPay"
+
+} else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
 //   return "Switch"
 } else {
   return "Not in these networks"
