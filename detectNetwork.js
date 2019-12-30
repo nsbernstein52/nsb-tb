@@ -190,6 +190,7 @@ var detectNetwork = function(cardNumber) {
 // DATA and TESTS
 
 console.log("TEST DATA AND CALLS");
+
 // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
 // let switchLengthSet = new Set([16, 18, 19]);
 // let switchPrefixSet = new Set(['4903', '4905', '4911', '4936', '6759', '564182', '633110']);
@@ -224,134 +225,134 @@ for (let iLength = 0; iLength < switchLengthArr.length; iLength++) {
 
 // Diner's Club always starts with a 38 or 39 and is 14 digits long
 myCardNumber = '38345678901234';
-console.log("DC: ", detectNetwork(myCardNumber));
+console.log("DC: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '39345678901234';
-console.log("DC: ", detectNetwork(myCardNumber));
+console.log("DC: ", myCardNumber, detectNetwork(myCardNumber));
 
 // American Express always starts with a 34 or 37 and is 15 digits long
 myCardNumber = '343456789012345';
-console.log("Amex: ", detectNetwork(myCardNumber));
+console.log("Amex: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '373456789012345';
-console.log("Amex: ", detectNetwork(myCardNumber));
+console.log("Amex: ", myCardNumber, detectNetwork(myCardNumber));
 
 // Visa always has a prefix of 4 and a length of 13, 16, or 19.
 myCardNumber = '4123456789012';
-console.log("Visa: ", detectNetwork(myCardNumber));
+console.log("Visa: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '4123456789012345';
-console.log("Visa: ", detectNetwork(myCardNumber));
+console.log("Visa: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '4123456789012345678';
-console.log("Visa: ", detectNetwork(myCardNumber));
+console.log("Visa: ", myCardNumber, detectNetwork(myCardNumber));
 
 // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 myCardNumber = '5112345678901234';
-console.log("MasterCard: ", detectNetwork(myCardNumber));
+console.log("MasterCard: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5212345678901234';
-console.log("MasterCard: ", detectNetwork(myCardNumber));
+console.log("MasterCard: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5312345678901234';
-console.log("MasterCard: ", detectNetwork(myCardNumber));
+console.log("MasterCard: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5412345678901234';
-console.log("MasterCard: ", detectNetwork(myCardNumber));
+console.log("MasterCard: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5512345678901234';
-console.log("MasterCard: ", detectNetwork(myCardNumber));
+console.log("MasterCard: ", myCardNumber, detectNetwork(myCardNumber));
 
 // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
 myCardNumber = '6011567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6011567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6444567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6444567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6454567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6454567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6464567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6464567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6474567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6474567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6484567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6484567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6494567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6494567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6534567890123456';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6534567890123456789';
-console.log("Discover: ", detectNetwork(myCardNumber));
+console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 
 // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 
 myCardNumber = '501856789012';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5018567890123';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50185678901234';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '501856789012345';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5018567890123456';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50185678901234567';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '501856789012345678';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5018567890123456789';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '502056789012';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5020567890123';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50205678901234';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '502056789012345';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5020567890123456';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50205678901234567';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '502056789012345678';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5020567890123456789';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '503856789012';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5038567890123';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50385678901234';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '503856789012345';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5038567890123456';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '50385678901234567';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '503856789012345678';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '5038567890123456789';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '630456789012';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6304567890123';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '63045678901234';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '630456789012345';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6304567890123456';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '63045678901234567';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '630456789012345678';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6304567890123456789';
-console.log("Maestro: ", detectNetwork(myCardNumber));
+console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 
