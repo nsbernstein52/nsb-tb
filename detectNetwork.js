@@ -38,7 +38,7 @@ let visaLengthSet = new Set([13, 16, 19]);
 let visaPrefixSet = new Set(['4']);
 // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 let masterCardLengthSet = new Set([16]);
-let masterCardPrefixArr = arrFromNumRange(51, 55);
+let masterCardPrefixArr = numArrToStrArr(arrFromNumRange(51, 55));
 // console.log(masterCardPrefixArr);
 let masterCardPrefixSet = setFromArr(masterCardPrefixArr);
 // console.log(masterCardPrefixSet);
@@ -74,7 +74,7 @@ function arrFromNumRange(start,end) {
 function numArrToStrArr(numArr) {
   strArr = [];
   for (let i = 0; i < numArr.length; i++) {
-    strArr.push(numArr[i].toString);
+    strArr.push(numArr[i].toString());
   }
   return strArr
 };
