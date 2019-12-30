@@ -145,10 +145,10 @@ function isCCNWPrefix(ccNWPrefixSet, num) {
   // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
     if ( (isCCNWLength(switchLengthSet, cardNumber.length) && (isCCNWPrefix(switchPrefixSet, cardNumberPrefixForSwitchTestSet) ) ) ) {
       return "Switch"
-      // The Diner's Club always starts with a 38 or 39 and is 14 digits long
+      // Diner's Club always starts with a 38 or 39 and is 14 digits long
   if ( (cardNumber.length === 14) && (cardNumber.slice(0,2) === '38') || (cardNumber.slice(0,2) === '39') ) {
     return "Diner's Club"
-  // The American Express always starts with a 34 or 37 and is 15 digits long
+  // American Express always starts with a 34 or 37 and is 15 digits long
   } else if ( (cardNumber.length === 15) && (cardNumber.slice(0,2) === '34') || (cardNumber.slice(0,2) === '37') ) {
     return "American Express"
   // Visa always has a prefix of 4 and a length of 13, 16, or 19.
@@ -176,16 +176,43 @@ function isCCNWPrefix(ccNWPrefixSet, num) {
 // DATA and TESTS
 
 console.log("TEST DATA AND CALLS");
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
-// TESTS TBD
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+// let switchLengthSet = new Set([16, 18, 19]);
+// let switchPrefixSet = new Set(['4903', '4905', '4911', '4936', '6759', '564182', '633110']);
+// iterate over array of lengths
+for (let lenI = 0; lenI < switchLengthArr.length; lenI++) {
+  // iterate over array of prefixes
+  for (let prefI = 0; prefI < 5; prefI++) { // 4 digits long
+    if (switchLengthArr[lenI] === 16) {
+      lenPadding = '567890123456'
+    } else if (switchLengthArr[lenI] = 18) {
+      lenPadding = '56789012345678'
+    } else if (switchLengthArr[lenI] = 19) {
+      lenPadding = '567890123456789'
+    }
+    myCardNumber = switchPrefixArr[prefI] + lenPadding;
+    console.log("Switch: ", myCardNumber, detectNetwork(myCardNumber));
+  }
+  for (let prefI = 5; prefI < switchPrefixArr.length; prefI++) { // 6 digits long
+    if (switchLengthArr[lenI] === 16) {
+      lenPadding = '7890123456'
+    } else if (switchLengthArr[lenI] = 18) {
+      lenPadding = '789012345678'
+    } else if (switchLengthArr[lenI] = 19) {
+      lenPadding = '7890123456789'
+    }
+    myCardNumber = switchPrefixArr[prefI] + lenPadding;
+    console.log("Switch: ", myCardNumber, detectNetwork(myCardNumber));
+  }
+}
 
-// The Diner's Club network always starts with a 38 or 39 and is 14 digits long
+// Diner's Club always starts with a 38 or 39 and is 14 digits long
 myCardNumber = '38345678901234';
 console.log("DC: ", detectNetwork(myCardNumber));
 myCardNumber = '39345678901234';
 console.log("DC: ", detectNetwork(myCardNumber));
 
-// The American Express network always starts with a 34 or 37 and is 15 digits long
+// American Express always starts with a 34 or 37 and is 15 digits long
 myCardNumber = '343456789012345';
 console.log("Amex: ", detectNetwork(myCardNumber));
 myCardNumber = '373456789012345';
