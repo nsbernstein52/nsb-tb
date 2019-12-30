@@ -59,7 +59,6 @@ let chinaUnionPayLengthSet = setFromArr(chinaUnionPayLengthArr);
 let chinaUnionPayPrefixArr = concatArrs(arrFromNumRange(624, 626), arrFromNumRange(6282, 6288), arrFromNumRange(62126, 622925) );
 let chinaUnionPayPrefixSet = setFromArr(chinaUnionPayPrefixArr);
 
-
 //  HELPER FUNCTIONS
 
 function arrFromNumRange(start,end) {
@@ -90,10 +89,6 @@ function concatArrs(...args) {
 function setFromArr(arr) {
   return (new Set(arr))
 }
-
-
-
-
 
 var detectNetwork = function(cardNumber) {
   // Note: `cardNumber` will always be a string
@@ -142,7 +137,9 @@ function isCCNWPrefix(ccNWPrefixSet, num) {
     }
   };
 
-  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
+  // test cardNumbers against each network
+
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
     if ( (isCCNWLength(switchLengthSet, cardNumber.length) && (isCCNWPrefix(switchPrefixSet, cardNumberPrefixForSwitchTestSet) ) ) ) {
       return "Switch"
       // Diner's Club always starts with a 38 or 39 and is 14 digits long
@@ -172,7 +169,6 @@ function isCCNWPrefix(ccNWPrefixSet, num) {
 
 };
 
-
 // DATA and TESTS
 
 console.log("TEST DATA AND CALLS");
@@ -180,25 +176,27 @@ console.log("TEST DATA AND CALLS");
 // let switchLengthSet = new Set([16, 18, 19]);
 // let switchPrefixSet = new Set(['4903', '4905', '4911', '4936', '6759', '564182', '633110']);
 // iterate over array of lengths
-for (let lenI = 0; lenI < switchLengthArr.length; lenI++) {
+console.log(switchLengthArr.length, switchLengthArr);
+for (let iLength = 0; iLength < switchLengthArr.length; iLength++) {
   // iterate over array of prefixes
+  console.log(switchLengthArr[iLength]);
   for (let prefI = 0; prefI < 5; prefI++) { // 4 digits long
-    if (switchLengthArr[lenI] === 16) {
+    if (switchLengthArr[iLength] === 16) {
       lenPadding = '567890123456'
-    } else if (switchLengthArr[lenI] = 18) {
+    } else if (switchLengthArr[iLength] === 18) {
       lenPadding = '56789012345678'
-    } else if (switchLengthArr[lenI] = 19) {
+    } else if (switchLengthArr[iLength] === 19) {
       lenPadding = '567890123456789'
     }
     myCardNumber = switchPrefixArr[prefI] + lenPadding;
     console.log("Switch: ", myCardNumber, detectNetwork(myCardNumber));
   }
   for (let prefI = 5; prefI < switchPrefixArr.length; prefI++) { // 6 digits long
-    if (switchLengthArr[lenI] === 16) {
+    if (switchLengthArr[iLength] === 16) {
       lenPadding = '7890123456'
-    } else if (switchLengthArr[lenI] = 18) {
+    } else if (switchLengthArr[iLength] === 18) {
       lenPadding = '789012345678'
-    } else if (switchLengthArr[lenI] = 19) {
+    } else if (switchLengthArr[iLength] === 19) {
       lenPadding = '7890123456789'
     }
     myCardNumber = switchPrefixArr[prefI] + lenPadding;
