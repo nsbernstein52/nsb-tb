@@ -45,8 +45,8 @@ let masterCardPrefixSet = setFromArr(masterCardPrefixArr);
 // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
 let discoverLengthSet = new Set([16, 19]);
 let discoverPrefixArr = concatArrs(['6011'], arrFromNumRange(644, 649), ['65']);
-let discoverPrefixSet = setFromArr(discoverPrefixArr);
-// let discoverPrefixSet = new Set(['6011', '644', '645', '646', '647', '648', '649', '65']);
+// let discoverPrefixSet = setFromArr(discoverPrefixArr);
+let discoverPrefixSet = new Set(['6011', '644', '645', '646', '647', '648', '649', '65']);
 // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 let maestroLengthArr = arrFromNumRange(12, 19);
 let maestroLengthSet = setFromArr(maestroLengthArr);
