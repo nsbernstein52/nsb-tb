@@ -105,26 +105,28 @@ var detectNetwork = function(cardNumber) {
 
 // HELPER DATA
 
-// populate cardNumber prefix sets for tests
-let cardNumberPrefixForSwitchTestSet = new Set([cardNumber.slice(0,4), cardNumber.slice(0,6)]);
+  // populate cardNumber prefix sets for tests
+  let cardNumberPrefixForSwitchTestSet = new Set([cardNumber.slice(0,4), cardNumber.slice(0,6)]);
 
 // HELPER FUNCTIONS
 
-// returns whether a credit card (CC) number length is a legitimate CC network (NW) length
-function isCCNWLength(ccNWLengthSet, num) {
-  // i: credit card network length set, number to assess for inclusion
-  // o: boolean: is included in set?
-  // assumptions: good data
-    return (ccNWLengthSet.has(num))
-};
+/*
+  // returns whether a credit card (CC) number length is a legitimate CC network (NW) length
+  function isCCNWLength(ccNWLengthSet, num) {
+    // i: credit card network length set, number to assess for inclusion
+    // o: boolean: is included in set?
+    // assumptions: good data
+      return (ccNWLengthSet.has(num))
+  };
 
-// returns whether a credit card (CC) number prefix is a legitimate CC network (NW) prefix
-function isCCNWPrefix(ccNWPrefixSet, num) {
-  // i: credit card network prefix set, number to assess for inclusion
-  // o: boolean: is included in set?
-  // assumptions: good data
-    return (ccNWPrefixSet.has(num))
-};
+  // returns whether a credit card (CC) number prefix is a legitimate CC network (NW) prefix
+  function isCCNWPrefix(ccNWPrefixSet, num) {
+    // i: credit card network prefix set, number to assess for inclusion
+    // o: boolean: is included in set?
+    // assumptions: good data
+      return (ccNWPrefixSet.has(num))
+  };
+*/
 
   // useful for Discover: pre-prepared calculations
   let cardNumberForDiscoverPrefixSet = new Set([cardNumber.slice(0,4), cardNumber.slice(0,3), cardNumber.slice(0,2)]);
@@ -139,34 +141,50 @@ function isCCNWPrefix(ccNWPrefixSet, num) {
 
   // test cardNumbers against each network
 
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
-    if ( (isCCNWLength(switchLengthSet, cardNumber.length) && (isCCNWPrefix(switchPrefixSet, cardNumberPrefixForSwitchTestSet) ) ) ) {
-      return "Switch"
-      // Diner's Club always starts with a 38 or 39 and is 14 digits long
-  if ( (cardNumber.length === 14) && (cardNumber.slice(0,2) === '38') || (cardNumber.slice(0,2) === '39') ) {
+  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
+  if  (switchLengthSet.has(cardNumber.length)
+      && switchPrefixSet.has(cardNumber.slice(0,4))
+      || switchPrefixSet.has(cardNumber.slice(0,6))
+  ) {
+    return "Switch"
+  // Diner's Club always starts with a 38 or 39 and is 14 digits long
+  } else if (cardNumber.length === 14
+      && cardNumber.slice(0,2) === '38'
+      || cardNumber.slice(0,2) === '39'
+  ) {
     return "Diner's Club"
   // American Express always starts with a 34 or 37 and is 15 digits long
-  } else if ( (cardNumber.length === 15) && (cardNumber.slice(0,2) === '34') || (cardNumber.slice(0,2) === '37') ) {
+  } else if (cardNumber.length === 15
+      && cardNumber.slice(0,2) === '34'
+     || cardNumber.slice(0,2) === '37'
+  ) {
     return "American Express"
   // Visa always has a prefix of 4 and a length of 13, 16, or 19.
-  } else if ( (visaLengthSet.has(cardNumber.length) ) && (cardNumber.slice(0,1) === '4') ) {
+  } else if (visaLengthSet.has(cardNumber.length)
+      && cardNumber.slice(0,1) === '4'
+  ) {
     return "Visa"
   // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
-  } else if ( (cardNumber.length === 16) && (masterCardPrefixSet.has(cardNumber.slice(0,2) ) ) ) {
+  } else if (cardNumber.length === 16
+      && masterCardPrefixSet.has(cardNumber.slice(0,2))
+  ) {
     return "MasterCard"
   // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
-  } else if ( (discoverLengthSet.has(cardNumber.length) ) && (isDiscoverPrefix) ) {
+  } else if (discoverLengthSet.has(cardNumber.length)
+      && isDiscoverPrefix
+  ) {
     return "Discover"
   // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
-  } else if ( (maestroLengthSet.has(cardNumber.length) ) || (maestroPrefixSet.has(cardNumber.slice(0,4) ) ) ) {
+  } else if (maestroLengthSet.has(cardNumber.length)
+     && maestroPrefixSet.has(cardNumber.slice(0,4))
+  ) {
     return "Maestro"
-  // // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
-  // } else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
-  //   return "Switch"
-  } else {
-    return "Not in these networks"
-  }
-
+// // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
+// } else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
+//   return "Switch"
+} else {
+  return "Not in these networks"
+}
 };
 
 // DATA and TESTS
@@ -176,10 +194,10 @@ console.log("TEST DATA AND CALLS");
 // let switchLengthSet = new Set([16, 18, 19]);
 // let switchPrefixSet = new Set(['4903', '4905', '4911', '4936', '6759', '564182', '633110']);
 // iterate over array of lengths
-console.log(switchLengthArr.length, switchLengthArr);
+// // console.log(switchLengthArr.length, switchLengthArr);
 for (let iLength = 0; iLength < switchLengthArr.length; iLength++) {
   // iterate over array of prefixes
-  console.log(switchLengthArr[iLength]);
+  // // console.log(switchLengthArr[iLength]);
   for (let prefI = 0; prefI < 5; prefI++) { // 4 digits long
     if (switchLengthArr[iLength] === 16) {
       lenPadding = '567890123456'
