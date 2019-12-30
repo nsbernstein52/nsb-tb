@@ -142,6 +142,8 @@ var detectNetwork = function(cardNumber) {
   // test cardNumbers against each network
 
   // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
+  // Per requirement that longer prefixes have precedence over shorter prefixes, Switch was moved to be tested first
+  let chinaUnionPayPrefixArr = concatArrs(numArrToStrArr(arrFromNumRange(624, 626)), numArrToStrArr(arrFromNumRange(6282, 6288)), numArrToStrArr(arrFromNumRange(62126, 622925)) );
   if  (switchLengthSet.has(cardNumber.length)
       && switchPrefixSet.has(cardNumber.slice(0,4))
       || switchPrefixSet.has(cardNumber.slice(0,6))
