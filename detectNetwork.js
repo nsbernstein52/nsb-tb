@@ -27,6 +27,8 @@
 //   NOTE: potential conflict with Visa. Multi-number prefixes take precedence. Therefore, these appear first
 let switchLengthSet = new Set([16, 18, 19]);
 let switchPrefixSet = new Set(['4903', '4905', '4911', '4936', '6759', '564182', '633110']);
+let switchLengthArr = [16, 18, 19];
+let switchPrefixArr = ['4903', '4905', '4911', '4936', '6759', '564182', '633110'];
 // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
 let dinersClubLengthSet = new Set ([14]);
 let dinersClubPrefixSet = new Set (['38', '39']);
@@ -106,7 +108,28 @@ var detectNetwork = function(cardNumber) {
     return "Switch"
 */
 
+// HELPER DATA
+
+// populate cardNumber prefix sets for tests
+let cardNumberPrefixForSwitchTestSet = new Set([cardNumber.slice(0,4), cardNumber.slice(0,6)]);
+
 // HELPER FUNCTIONS
+
+// returns whether a credit card (CC) number length is a legitimate CC network (NW) length
+function isCCNWLength(ccNWLengthSet, num) {
+  // i: credit card network length set, number to assess for inclusion
+  // o: boolean: is included in set?
+  // assumptions: good data
+    return (ccNWLengthSet.has(num))
+};
+
+// returns whether a credit card (CC) number prefix is a legitimate CC network (NW) prefix
+function isCCNWPrefix(ccNWPrefixSet, num) {
+  // i: credit card network prefix set, number to assess for inclusion
+  // o: boolean: is included in set?
+  // assumptions: good data
+    return (ccNWPrefixSet.has(num))
+};
 
   // useful for Discover: pre-prepared calculations
   let cardNumberForDiscoverPrefixSet = new Set([cardNumber.slice(0,4), cardNumber.slice(0,3), cardNumber.slice(0,2)]);
@@ -119,11 +142,13 @@ var detectNetwork = function(cardNumber) {
     }
   };
 
-
-    // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
+  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.  } else {
+    if ( (isCCNWLength(switchLengthSet, cardNumber.length) && (isCCNWPrefix(switchPrefixSet, cardNumberPrefixForSwitchTestSet) ) ) ) {
+      return "Switch"
+      // The Diner's Club always starts with a 38 or 39 and is 14 digits long
   if ( (cardNumber.length === 14) && (cardNumber.slice(0,2) === '38') || (cardNumber.slice(0,2) === '39') ) {
     return "Diner's Club"
-  // The American Express network always starts with a 34 or 37 and is 15 digits long
+  // The American Express always starts with a 34 or 37 and is 15 digits long
   } else if ( (cardNumber.length === 15) && (cardNumber.slice(0,2) === '34') || (cardNumber.slice(0,2) === '37') ) {
     return "American Express"
   // Visa always has a prefix of 4 and a length of 13, 16, or 19.
