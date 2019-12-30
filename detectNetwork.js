@@ -65,7 +65,7 @@ function arrFromNumRange(start,end) {
   // o: array of that range
   // assume: good data
   let arr = [];
-  for (let rangeIndex = start; rangeIndex < (end - 1); rangeIndex++) {
+  for (let rangeIndex = start; rangeIndex < (end + 1); rangeIndex++) {
     arr.push(rangeIndex)
   }
   return arr
