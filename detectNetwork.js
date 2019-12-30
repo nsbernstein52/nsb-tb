@@ -56,7 +56,7 @@ let maestroPrefixSet = new Set(['5018', '5020', '5038', '6304']);
 // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
 let chinaUnionPayLengthArr = concatArrs(arrFromNumRange(16,19));
 let chinaUnionPayLengthSet = setFromArr(chinaUnionPayLengthArr);
-let chinaUnionPayPrefixArr = concatArrs(arrFromNumRange(624, 626), arrFromNumRange(6282, 6288), arrFromNumRange(62126, 622925) );
+let chinaUnionPayPrefixArr = concatArrs(numArrToStrArr(arrFromNumRange(624, 626)), numArrToStrArr(arrFromNumRange(6282, 6288)), numArrToStrArr(arrFromNumRange(62126, 622925)) );
 let chinaUnionPayPrefixSet = setFromArr(chinaUnionPayPrefixArr);
 
 //  HELPER FUNCTIONS
@@ -179,8 +179,8 @@ var detectNetwork = function(cardNumber) {
      && maestroPrefixSet.has(cardNumber.slice(0,4))
   ) {
     return "Maestro"
-// // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
-// } else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
+  // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
+  } else if ( (isCCNWLength(chinaUnionPayLengthSet, cardNumber.length) && (isCCNWPrefix(chinaUnionPayPrefixSet, cardNumberPrefixForChinaUnionPayTestSet) ) ) ){
 //   return "Switch"
 } else {
   return "Not in these networks"
