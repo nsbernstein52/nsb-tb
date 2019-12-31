@@ -365,3 +365,90 @@ console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6304567890123456789';
 console.log("Maestro: ", myCardNumber, detectNetwork(myCardNumber));
 
+// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
+// create array to hold results.
+
+let chinaUnionPayTestResultsArr = [];
+//iterate over the lengths of cUP: 16-19
+for (let iLength = 0; iLength < chinaUnionPayLengthArr.length; iLength++) {
+  // iterate over array of prefixes
+  // // console.log(chinaUnionPayLengthArr[iLength]);
+  for (let prefI = 0; prefI < 3; prefI++) {
+    // 3 digits long x3 x 4 = 12
+    if (chinaUnionPayLengthArr[iLength] === 16) {
+      lenPadding = '4567890123456'
+    } else if (chinaUnionPayLengthArr[iLength] === 17) {
+      lenPadding = '45678901234567'
+    } else if (chinaUnionPayLengthArr[iLength] === 18) {
+      lenPadding = '456789012345678'
+    } else if (chinaUnionPayLengthArr[iLength] === 19) {
+      lenPadding = '4567890123456789'
+    }
+    myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
+    // console.log(myCardNumber);
+    // push results into results array
+    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    // console.log 2 of the results
+    // if  (
+    //       (chinaUnionPayPrefixArr[prefI] === '624')
+    //       && (chinaUnionPayLengthArr[iLength] === 16)
+    //       // || chinaUnionPayLengthArr[iLength] === 19)
+    //     ) {
+    //       console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    //     }
+    // console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+
+  }
+  for (let prefI = 3; prefI < 9; prefI++) {
+    // 4 digits long x 7 x 4 = 28
+    if (chinaUnionPayLengthArr[iLength] === 16) {
+      lenPadding = '567890123456'
+    } else if (chinaUnionPayLengthArr[iLength] === 17) {
+      lenPadding = '5678901234567'
+    } else if (chinaUnionPayLengthArr[iLength] === 18) {
+      lenPadding = '56789012345678'
+    } else if (chinaUnionPayLengthArr[iLength] === 19) {
+      lenPadding = '567890123456789'
+    }
+    myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
+    // push results into results array
+    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    // console.log 2 of the results
+  //   if  (
+  //         (chinaUnionPayPrefixArr[prefI] === '6282')
+  //         // && (iLength === 3 || iLength === 6)
+  //         && (chinaUnionPayLengthArr[iLength] === 16)
+  //       ) {
+  //         console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+  //       }
+  //   console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+  }
+  // console.log("cUP: resultsArr lengths (12,28,3200,3240): ", chinaUnionPayTestResultsArr.length)
+
+  for (let prefI = 9; prefI < chinaUnionPayPrefixArr.length; prefI++) { // 6 digits long x 800 => 3200
+    if (chinaUnionPayLengthArr[iLength] === 16) {
+      lenPadding = '7890123456'
+    } else if (chinaUnionPayLengthArr[iLength] === 17) {
+      lenPadding = '78901234567'
+    } else if (chinaUnionPayLengthArr[iLength] === 18) {
+      lenPadding = '789012345678'
+    } else if (chinaUnionPayLengthArr[iLength] === 19) {
+      lenPadding = '7890123456789'
+    }
+    myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
+    // push results into results array
+    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    // console.log 4 of the results
+    // if  (
+    //       (iLength === 7 || iLength === chinaUnionPayPrefixArr.length)
+    //       && (prefI === '622126' || prefI === '622925')
+    //     ) {
+    //       console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    //     }
+    // console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+  }
+}
+  console.log("cUP: resultsArr lengths (12,28,3200, 3240: ", chinaUnionPayTestResultsArr.length)
+
+// console.log("\ncUPTRA: ", chinaUnionPayTestResultsArr);
+
