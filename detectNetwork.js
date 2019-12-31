@@ -427,7 +427,7 @@ for (let i = lengthOfcUPTRA - 3; i < lengthOfcUPTRA; i++) {
 }
 console.log(cUPLast3ResultsArr);
 
-// Two last tests for Not in network
+// Two final tests for Not in network
 let badCardNumber = ''; // empty string
 console.log("Empy string: ", detectNetwork(badCardNumber));
 badCardNumber = '1234567890123456'; // nonsense string
