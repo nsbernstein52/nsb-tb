@@ -374,7 +374,7 @@ for (let iLength = 0; iLength < chinaUnionPayLengthArr.length; iLength++) {
   // iterate over array of prefixes
   // // console.log(chinaUnionPayLengthArr[iLength]);
   for (let prefI = 0; prefI < 3; prefI++) {
-    // 3 digits long x3 x 4 = 12
+    // 624, 625, 626: 3 digits long x3 x 4 = 12
     if (chinaUnionPayLengthArr[iLength] === 16) {
       lenPadding = '4567890123456'
     } else if (chinaUnionPayLengthArr[iLength] === 17) {
@@ -387,20 +387,10 @@ for (let iLength = 0; iLength < chinaUnionPayLengthArr.length; iLength++) {
     myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
     // console.log(myCardNumber);
     // push results into results array
-    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-    // console.log 2 of the results
-    // if  (
-    //       (chinaUnionPayPrefixArr[prefI] === '624')
-    //       && (chinaUnionPayLengthArr[iLength] === 16)
-    //       // || chinaUnionPayLengthArr[iLength] === 19)
-    //     ) {
-    //       console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-    //     }
-    // console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-
+    chinaUnionPayTestResultsArr.push(["China UnionPay: ", myCardNumber, detectNetwork(myCardNumber)]);
   }
-  for (let prefI = 3; prefI < 9; prefI++) {
-    // 4 digits long x 7 x 4 = 28
+  for (let prefI = 3; prefI < 10; prefI++) {
+    // 8282-8288: 4 digits long x 7 x 4 = 28
     if (chinaUnionPayLengthArr[iLength] === 16) {
       lenPadding = '567890123456'
     } else if (chinaUnionPayLengthArr[iLength] === 17) {
@@ -412,20 +402,10 @@ for (let iLength = 0; iLength < chinaUnionPayLengthArr.length; iLength++) {
     }
     myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
     // push results into results array
-    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-    // console.log 2 of the results
-  //   if  (
-  //         (chinaUnionPayPrefixArr[prefI] === '6282')
-  //         // && (iLength === 3 || iLength === 6)
-  //         && (chinaUnionPayLengthArr[iLength] === 16)
-  //       ) {
-  //         console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-  //       }
-  //   console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    chinaUnionPayTestResultsArr.push(["China UnionPay: ", myCardNumber, detectNetwork(myCardNumber)]);
   }
-  // console.log("cUP: resultsArr lengths (12,28,3200,3240): ", chinaUnionPayTestResultsArr.length)
-
-  for (let prefI = 9; prefI < chinaUnionPayPrefixArr.length; prefI++) { // 6 digits long x 800 => 3200
+  for (let prefI = 10; prefI < chinaUnionPayPrefixArr.length; prefI++) {
+    // 666126-622925: 6 digits long x 800 => 3200
     if (chinaUnionPayLengthArr[iLength] === 16) {
       lenPadding = '7890123456'
     } else if (chinaUnionPayLengthArr[iLength] === 17) {
@@ -437,18 +417,27 @@ for (let iLength = 0; iLength < chinaUnionPayLengthArr.length; iLength++) {
     }
     myCardNumber = chinaUnionPayPrefixArr[prefI] + lenPadding;
     // push results into results array
-    chinaUnionPayTestResultsArr.push("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-    // console.log 4 of the results
-    // if  (
-    //       (iLength === 7 || iLength === chinaUnionPayPrefixArr.length)
-    //       && (prefI === '622126' || prefI === '622925')
-    //     ) {
-    //       console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
-    //     }
-    // console.log("China UnionPay: ", myCardNumber, detectNetwork(myCardNumber));
+    chinaUnionPayTestResultsArr.push(["China UnionPay: ", myCardNumber, detectNetwork(myCardNumber)]);
   }
 }
-  console.log("cUP: resultsArr lengths (12,28,3200, 3240: ", chinaUnionPayTestResultsArr.length)
+// display length of China UnionPay results array
+console.log("cUP: resultsArr length (12+28+3200 = 3240): ", chinaUnionPayTestResultsArr.length)
 
-// console.log("\ncUPTRA: ", chinaUnionPayTestResultsArr);
+// display sampling of CUP results
+let lengthOfcUPTRA = chinaUnionPayTestResultsArr.length;
+// console.log(lengthOfcUPTRA);
+let cUPFirst15ResultsArr = []
+console.log("First 15 elements in CUP results array:")
+for (let i = 0; i < 15; i++) {
+  // 0-15
+  cUPFirst15ResultsArr.push(chinaUnionPayTestResultsArr[i])
+}
+console.log(cUPFirst15ResultsArr);
 
+console.log("... and last 3 elements in CUP results array:")
+let cUPLast3ResultsArr = []
+for (let i = lengthOfcUPTRA - 3; i < lengthOfcUPTRA; i++) {
+  //
+  cUPLast3ResultsArr.push(chinaUnionPayTestResultsArr[i])
+}
+console.log(cUPLast3ResultsArr);
