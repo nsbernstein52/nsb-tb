@@ -173,7 +173,7 @@ var detectNetwork = function(cardNumber) {
     return "Maestro"
 
     // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19
-} else if  (chinaUnionPayLengthSet.has(cardNumber.length)
+  } else if  (chinaUnionPayLengthSet.has(cardNumber.length)
       && chinaUnionPayPrefixSet.has(cardNumber.slice(0,3))
       || chinaUnionPayPrefixSet.has(cardNumber.slice(0,4))
       || chinaUnionPayPrefixSet.has(cardNumber.slice(0,6))
@@ -255,6 +255,33 @@ myCardNumber = '6011567890123456';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6011567890123456789';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
+
+// Hint from challenge:  Use IIFE below. Why is IIFE needed?
+  // for (var prefix = 644; prefix <= 649; prefix++) {
+  //   (function(prefix) {
+  //     it('has a prefix of ' + prefix + ' and a length of 16’);
+  //     it('has a prefix of ' + prefix + ' and a length of 19’);
+  //   })(prefix)}
+// for length of 16 and then 19
+for (let length = 16; length < 20; length+=3) {
+// iterate using IIFE over prefixes
+  for (let prefix = 644; prefix <= 649; prefix++) {
+    let prefixStr = prefix.toString();
+    (function(prefix) {
+      if (length === 16) {
+        let suffixP3L16 = '4567890123456';
+        myCardNumber = prefixStr.concat(suffixP3L16);
+        console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
+      } else if (length === 19) {
+        let suffixP3L19 = '4567890123456789';
+        myCardNumber = prefixStr.concat(suffixP3L19);
+        console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
+      }
+    })(prefix)
+  }
+}
+
+/* // replaced by IIFE, above
 myCardNumber = '6444567890123456';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6444567890123456789';
@@ -279,6 +306,7 @@ myCardNumber = '6494567890123456';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6494567890123456789';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
+*/
 myCardNumber = '6534567890123456';
 console.log("Discover: ", myCardNumber, detectNetwork(myCardNumber));
 myCardNumber = '6534567890123456789';
